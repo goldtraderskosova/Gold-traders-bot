@@ -1,15 +1,18 @@
 
-name: Test Telegram Bot
+name: Gold Traders Kosova - XAUUSD M15
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "7,22,37,52 * * * *"
 
 permissions:
   contents: read
 
 jobs:
-  test:
+  strategy:
     runs-on: ubuntu-latest
+    timeout-minutes: 3
 
     steps:
       - name: Checkout repository
@@ -20,7 +23,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Send test message
+      - name: Run XAUUSD strategy
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
