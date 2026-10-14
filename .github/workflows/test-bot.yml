@@ -3,8 +3,10 @@ name: Gold Traders Kosova - XAUUSD M15
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "7,22,37,52 * * * *"
+
+schedule:
+  - cron: "*/5 * * * *"
+
 
 permissions:
   contents: read
